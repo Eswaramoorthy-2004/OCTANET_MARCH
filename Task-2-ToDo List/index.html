@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <img src="to-do-list.png" height="50px" width="100px">
+        <ul>
+            <li>Home</li>
+            <li>Remainder</li>
+            <li>To-Do</li>
+            <li>Help</li>
+            <li>Account</li>
+        </ul>
+    </div>
+
+    <div class="todo">
+        <img src="todo_background1.png" alt="">
+        <div class="content">
+            <div class="container">
+                <div class="do">
+                    <input id="list-value" type="text" placeholder="Add new task">
+                    <br>
+                    <button onclick="add()">ADD</button>
+                </div>
+                <div id="tasks"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var tasksContainer = document.getElementById("tasks");
+        var input = document.getElementById("list-value");
+        
+        function add() {
+            var taskText = input.value.trim();
+            if (taskText !== "") {
+                var taskDiv = document.createElement("div");
+                taskDiv.textContent = taskText;
+                taskDiv.classList.add("task"); 
+                taskDiv.addEventListener("click", function() {
+                    
+                    this.classList.toggle("clicked");
+                });
+                tasksContainer.appendChild(taskDiv);
+                input.value = ""; 
+            } else {
+                alert("Please enter a task.");
+            }
+        }
+        
+    </script>
+</body>
+</html>
